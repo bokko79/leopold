@@ -72,6 +72,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->layout = '/intro';
+
         return $this->render('index');
     }
 
@@ -139,6 +141,54 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    /**
+     * Displays a restaurant page.
+     *
+     * @return mixed
+     */
+    public function actionRestaurant()
+    {
+        $this->layout = '/features';
+
+        return $this->render('restaurant');
+    }
+
+    /**
+     * Displays a conference hall page.
+     *
+     * @return mixed
+     */
+    public function actionHall()
+    {
+        $this->layout = '/features';
+
+        return $this->render('hall');
+    }
+
+    /**
+     * Displays a banquet page.
+     *
+     * @return mixed
+     */
+    public function actionBanquet()
+    {
+        $this->layout = '/features';
+
+        return $this->render('banquet');
+    }
+
+    /**
+     * Displays a spa page.
+     *
+     * @return mixed
+     */
+    public function actionSpa()
+    {
+        $this->layout = '/features';
+
+        return $this->render('spa');
     }
 
     /**

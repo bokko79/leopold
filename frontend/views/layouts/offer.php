@@ -20,8 +20,6 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <?php $this->head() ?>
 </head>
 <body>
@@ -33,16 +31,11 @@ AppAsset::register($this);
         'brandLabel' => 'My Company',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-default navbar-fixed-top',
+            'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Accomodation', 'url' => ['/rooms/index']],
-        ['label' => 'Restaurant', 'url' => ['/site/restaurant']],
-        ['label' => 'Wellness', 'url' => ['/site/spa']],
-        ['label' => 'Halls', 'url' => ['/site/hall']],
-        ['label' => 'Offers', 'url' => ['/offers/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
