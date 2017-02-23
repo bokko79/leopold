@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use common\components\languageSwitcher;
 
 AppAsset::register($this);
 ?>
@@ -20,68 +21,59 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+    <script src="https://use.fontawesome.com/f6ceb1ff95.js"></script>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+
+    <header>
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => Html::img('/images/home/logo.png', ['style'=>'width:150px;']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-default navbar-fixed-top',
+            'class' => 'navbar navbar-inverse navbar-main',
+            'role' => 'navigation',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Accomodation', 'url' => ['/rooms/index']],
-        ['label' => 'Restaurant', 'url' => ['/site/restaurant']],
-        ['label' => 'Wellness', 'url' => ['/site/spa']],
-        ['label' => 'Halls', 'url' => ['/site/hall']],
-        ['label' => 'Offers', 'url' => ['/offers/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Home', 'url' => ['/site/index'], ['class'=>'singleDrop']],
+        ['label' => \Yii::t('app', 'Accomodation'), 'url' => ['/rooms/index']],
+        ['label' => \Yii::t('app', 'Features'),
+          'items' => [
+              ['label' => \Yii::t('app', 'Restaurant'), 'url' => ['/site/restaurant']],
+              ['label' => \Yii::t('app', 'Wellness & Spa'), 'url' => ['/site/spa']],
+              ['label' => \Yii::t('app', 'Gym'), 'url' => ['/site/spa']],
+              ['label' => \Yii::t('app', 'Congress Hall'), 'url' => ['/site/hall']],
+              ['label' => \Yii::t('app', 'Board Room'), 'url' => ['/site/hall']],
+          ],
+        ],
+        ['label' => \Yii::t('app', 'Offers'), 'url' => ['/offers/index']],
+        ['label' => \Yii::t('app', 'About'), 'url' => ['/site/about']],
+        ['label' => \Yii::t('app', 'Contact'), 'url' => ['/site/contact']],
     ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
     ]);
     NavBar::end();
-    ?>
+    ?> 
+    <?= languageSwitcher::Widget() ?>
+    </header>
 
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+        ]) ?>       
+        
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
-</div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+<?= $this->render('partial/footer.php') ?>
 
 <?php $this->endBody() ?>
 </body>
