@@ -51,6 +51,8 @@ class RoomsController extends Controller
      */
     public function actionView($id)
     {
+        $this->layout = '/room';
+        
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

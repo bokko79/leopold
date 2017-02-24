@@ -43,7 +43,7 @@ class Rooms extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'floor', 'number', 'file_id'], 'required'],
+            [['name'], 'required'],
             [['floor', 'number', 'area', 'is_available', 'file_id', 'available_from', 'update_time'], 'integer'],
             [['hotel_dept', 'type'], 'string'],
             [['price'], 'number'],

@@ -6,11 +6,11 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use frontend\assets\AppAsset;
-use common\widgets\Alert;
+use frontend\assets\RoomAsset;
+use frontend\assets\SphereViewerAsset;
 
-AppAsset::register($this);
+RoomAsset::register($this);
+SphereViewerAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -24,59 +24,50 @@ AppAsset::register($this);
     <script src="https://use.fontawesome.com/f6ceb1ff95.js"></script>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="changeHeader">
 <?php $this->beginBody() ?>
 
-<div class="wrap">
+<!-- HEADER -->
+<header>
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandLabel' => Html::img('/images/home/logo.png', ['style'=>'width:150px;']),
+        //'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar navbar-main fadeIn animated',
+            'role' => 'navigation',
+            'style' => 'text-shadow:1px 1px #000;',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Home', 'url' => ['/'], ['class'=>'singleDrop']],
+        ['label' => 'Accomodation', 'url' => ['/rooms/index']],
+        ['label' => 'Features',
+          'items' => [
+              ['label' => 'Restaurant', 'url' => ['/site/restaurant']],
+              ['label' => 'Wellness & Spa', 'url' => ['/site/spa']],
+              ['label' => 'Gym', 'url' => ['/site/spa']],
+              ['label' => 'Congress Hall', 'url' => ['/site/hall']],
+              ['label' => 'Board Room', 'url' => ['/site/hall']],
+          ],
+        ],
+        ['label' => 'Offers', 'url' => ['/offers/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
-    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
     ]);
     NavBar::end();
-    ?>
-
-    <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
-</div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
-    </div>
-</footer>
+    ?> 
+</header>
+<div id="containerp" style="height:480px; /*position: absolute;*/margin: -117px 0 20px;" class="<?= $this->params['model'] ?>"></div>
+<div class="container">
+    <?= $content ?>
+</div>   
+    
+    <?= $this->render('partial/footer.php') ?>
 
 <?php $this->endBody() ?>
 </body>

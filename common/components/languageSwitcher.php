@@ -20,9 +20,8 @@ class languageSwitcher extends Widget
     /* ใส่ภาษาของคุณที่นี่ */
     public $languages = [
         'en-US' => 'English',
-        'EN' => 'English',
         'SR' => 'srpski',
-        'DE' => 'Deutsch',
+        //'DE' => 'Deutsch',
     ];
  
     public function init()

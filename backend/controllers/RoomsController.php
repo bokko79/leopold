@@ -65,7 +65,7 @@ class RoomsController extends Controller
     public function actionCreate()
     {
         $model = new Rooms();
-        if ($model->load(Yii::$app->request->post()) and $translate->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post())) {
             $model->files = UploadedFile::getInstance($model, 'files');
             $model->update_time = time();
             if($model->save()){

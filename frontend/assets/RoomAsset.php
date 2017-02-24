@@ -1,0 +1,48 @@
+<?php
+
+namespace frontend\assets;
+
+use yii\web\AssetBundle;
+
+/**
+ * Main frontend application asset bundle.
+ */
+class RoomAsset extends AssetBundle
+{
+    public $basePath = '@webroot';
+    public $baseUrl = '@web';
+    public $css = [
+        'css/site.css',
+        'css/style_1.css',
+        //'css/style.css',
+        'css/animate.css',
+        //'css/default.css',
+        'css/isotope.css',
+        'css/jquery-ui.css',
+        //'css/jquery.fancybox.css',
+        //'css/optionswitch.css',
+        //'css/select_option1.css',
+        //'css/settings.css',
+    ];
+    public $js = [
+       // 'js/bootstrap-datepicker.js',
+       // 'js/custom.js',
+        'js/isotope-triger.js',
+        'js/isotope.min.js',
+        'js/jquery-ui.js',
+        //'js/jquery.counterup.min.js',
+        'js/jquery.fancybox.pack.js',
+        //'js/jquery.selectbox-0.1.3.min.js',
+       // 'js/jquery.syotimer.js',
+        //'js/jquery.themepunch.revolution.min.js',
+        //'js/jquery.themepunch.tools.min.js',
+        //'js/optionswitcher.js',
+        //'js/SmoothScroll.js',
+        //'js/waypoints.min.js',
+        'js/sphere.js',
+    ];
+    public $depends = [
+        'yii\web\YiiAsset',
+        'yii\bootstrap\BootstrapAsset',
+    ];
+}

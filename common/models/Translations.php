@@ -38,7 +38,7 @@ class Translations extends \yii\db\ActiveRecord
             [['entity', 'text'], 'string'],
             [['entity_id', 'lang_code', 'name', 'text'], 'required'],
             [['entity_id'], 'integer'],
-            [['lang_code'], 'string', 'max' => 2],
+            [['lang_code'], 'string', 'max' => 5],
             [['name', 'subtitle'], 'string', 'max' => 128],
             [['title'], 'string', 'max' => 64],
             [['teaser'], 'string', 'max' => 256],
