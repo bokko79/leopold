@@ -32,7 +32,7 @@ $marker = new Marker([
     'title' => 'My Home Town',
 ]);
 ?>
-<div class="site-contact">
+<div class="site-contact" style="padding:0px 0 40px;">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>

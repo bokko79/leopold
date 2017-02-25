@@ -13,7 +13,7 @@ $language = \common\models\Languages::find()->where('code="'.Yii::$app->language
 <header>
 <?php
     NavBar::begin([
-        'brandLabel' => Html::img('/images/home/logo.png', ['class'=>'logo-image']),
+        'brandLabel' => Html::img('/images/home/leopold-logo-white.png', ['class'=>'logo-image']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar navbar-main',
