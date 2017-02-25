@@ -165,4 +165,13 @@ class SiteController extends Controller
 
         return $this->render('gym');
     }
+
+    public function actionDownload($path) 
+    {
+        $file = Yii::getAlias('@webroot') . $path;
+
+        if (file_exists($file)){
+            Yii::$app->response->sendFile($file);
+        } 
+    }
 }

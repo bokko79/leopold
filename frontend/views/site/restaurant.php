@@ -59,7 +59,7 @@ $model = \common\models\Rooms::findOne(1);
         	<h4><?= \Yii::t('app', 'Description') ?></h4>
 		        <p>You can enjoy delicious meals from our specially created menu. International cuisine with a touch of local flair will make your lunch or dinner unforgettable in the marvelous restaurant of Hotel Leopold I.</p>
 
-				<p>Specialy created fasting menu with winter tastes will wake up your appetite and make you ask for more. </p>
+				<p>Specialy created fasting menu with winter tastes will wake up your appetite and make you ask for more. <?= Html::a('Download file', ['/site/download', 'path'=>'/images/room/room1.jpg']) ?></p>
 
 		<p>In the close proximity of the hotel 3 restaurants (a Serbian National Restaurant, an Italian Restaurant/Pizzeria and a Fish Restaurant) have a the total capacity of 700 seats.</p>
 

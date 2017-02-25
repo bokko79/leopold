@@ -22,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+    
 
     <!-- SEARCH TOUR -->
     <?php /*<section class="darkSection" style="background: none !important;">

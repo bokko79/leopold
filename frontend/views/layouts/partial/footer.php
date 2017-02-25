@@ -34,11 +34,11 @@ use yii\helpers\Url;
         <div class="col-sm-3 col-xs-12">
           <div class="footerContent">
             <h5>Newsletter</h5>
-            <p>Get on out mailing list and find out our best packages first!</p>
+            <p>Get on out mailing list and find out about our hot packages first!.</p>
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Enter your email" aria-describedby="basic-addon21">
               <span class="input-group-addon" id="basic-addon21"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
-            </div>            
+            </div>
           </div>
         </div>
       </div>
@@ -47,16 +47,20 @@ use yii\helpers\Url;
     <div class="copyRight">
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 col-sm-push-6 col-xs-12">
-            <ul class="list-inline">
-              <li><?= Html::a(\Yii::t('app', 'Privacy Policy'), ['/site/policy'], ['class'=>'']) ?></li>
-              <li><?= Html::a(\Yii::t('app', 'About'), ['/site/about'], ['class'=>'']) ?></li>
-              <li><?= Html::a(\Yii::t('app', 'Offers'), ['/offers/index'], ['class'=>'']) ?></li>
-            </ul>
-          </div>
-          <div class="col-sm-6 col-sm-pull-6 col-xs-12">
+          <div class="col-sm-12">
             <div class="copyRightText">
-              <p>Copyright © <?= date("Y"); ?>. All Rights Reserved by <?= Html::a('Masterplan ARC', Url::to('http://www.masterplan.rs/'), ['class'=>'', 'target'=>'_blank']) ?>.</p>
+              <p style="text-align:center;">Copyright © <?= date("Y"); ?>. All Rights Reserved by <?= Html::a('Masterplan ARC', Url::to('http://www.masterplan.rs/'), ['class'=>'', 'target'=>'_blank']) ?>.
+                  <span style="padding: 0 10px">|</span>
+                  <?= \Yii::t('app', 'We accept') ?>:  
+                  <i class="fa fa-cc-visa" aria-hidden="true"></i> Visa 
+                  <i class="fa fa-cc-mastercard" aria-hidden="true"></i> MasterCard
+                  <i class="fa fa-cc-amex" aria-hidden="true"></i> American Express.
+                  <span style="padding: 0 10px">|</span>
+                  <?= Html::a(\Yii::t('app', 'Privacy Policy'), ['/site/policy'], ['class'=>'']) ?><span style="padding: 0 10px">|</span>
+                  <?= Html::a(\Yii::t('app', 'About'), ['/site/about'], ['class'=>'']) ?><span style="padding: 0 10px">|</span>
+                  <?= Html::a(\Yii::t('app', 'Offers'), ['/offers/index'], ['class'=>'']) ?>
+            
+            </p>
             </div>
           </div>
         </div>
