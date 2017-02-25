@@ -11,30 +11,36 @@ namespace common\components;
 use Yii;
 use yii\base\Component;
 use yii\base\Widget;
-use yii\bootstrap\ButtonDropdown;
+use yii\bootstrap\Dropdown;
 use yii\helpers\Url;
 use yii\web\Cookie;
  
 class languageSwitcher extends Widget
 {
-    /* ใส่ภาษาของคุณที่นี่ */
     public $languages = [
         'en-US' => 'English',
-        'SR' => 'srpski',
+        'sr-Latn' => 'srpski',
+        //'DE' => 'Deutsch',
+    ];
+
+    public $lang_codes = [
+        'en-US' => 'EN',
+        'sr-Latn' => 'SR',
         //'DE' => 'Deutsch',
     ];
  
     public function init()
     {
-        if(php_sapi_name() === 'cli')
+       /* if(php_sapi_name() === 'cli')
         {
             return true;
-        }
+        }*/
  
         parent::init();
  
         $cookies = Yii::$app->response->cookies;
-        $languageNew = Yii::$app->request->get('language');
+        $cookies1 = Yii::$app->request->cookies;
+        $languageNew = Yii::$app->request->get('lang');
         if($languageNew)
         {
             if(isset($this->languages[$languageNew]))
@@ -42,13 +48,14 @@ class languageSwitcher extends Widget
                 Yii::$app->language = $languageNew;
                 $cookies->add(new \yii\web\Cookie([
                     'name' => 'language',
-                    'value' => $languageNew
+                    'value' => $languageNew,
+                    'expire' => time() + 60 * 60 * 24 * 30, // 30 days
                 ]));
             }
         }
-        elseif($cookies->has('language'))
+        elseif($cookies1->has('language'))
         {
-            Yii::$app->language = $cookies->getValue('language');
+            Yii::$app->language = $cookies1->getValue('language');
         }
  
     }
@@ -56,22 +63,25 @@ class languageSwitcher extends Widget
     public function run(){
         $languages = $this->languages;
         $current = $languages[Yii::$app->language];
-        unset($languages[Yii::$app->language]);
+        $current_code = $this->lang_codes[Yii::$app->language];
+        //unset($languages[Yii::$app->language]);
+        //unset($lang_codes[Yii::$app->language]);
  
         $items = [];
         foreach($languages as $code => $language)
         {
             $temp = [];
             $temp['label'] = $language;
-            $temp['url'] = Url::current(['language' => $code]);
+            $temp['url'] = Url::current(['lang' => $code]);
+            $temp['test'] = $current_code;
             array_push($items, $temp);
         }
  
-        echo ButtonDropdown::widget([
-            'label' => $current,
-            'dropdown' => [
+        echo Dropdown::widget([
+            /*'label' => $current_code,
+            'dropdown' => [*/
                 'items' => $items,
-            ],
+            /*],*/
         ]);
     }
  

@@ -16,4 +16,5 @@ return [
     'Offers' => 'Ponude',
     'About' => 'O nama',
     'Contact' => 'Kontakt',
+    'Our Rooms and Accommodation' => 'Naši smeštajni kapaciteti',
 ];

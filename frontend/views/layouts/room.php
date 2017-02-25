@@ -27,47 +27,14 @@ SphereViewerAsset::register($this);
 <body class="changeHeader">
 <?php $this->beginBody() ?>
 
-<!-- HEADER -->
-<header>
-    <?php
-    NavBar::begin([
-        'brandLabel' => Html::img('/images/home/logo.png', ['style'=>'width:150px;']),
-        //'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar navbar-main fadeIn animated',
-            'role' => 'navigation',
-            'style' => 'text-shadow:1px 1px #000;',
-        ],
-    ]);
-    $menuItems = [
-        ['label' => 'Home', 'url' => ['/'], ['class'=>'singleDrop']],
-        ['label' => 'Accomodation', 'url' => ['/rooms/index']],
-        ['label' => 'Features',
-          'items' => [
-              ['label' => 'Restaurant', 'url' => ['/site/restaurant']],
-              ['label' => 'Wellness & Spa', 'url' => ['/site/spa']],
-              ['label' => 'Gym', 'url' => ['/site/spa']],
-              ['label' => 'Congress Hall', 'url' => ['/site/hall']],
-              ['label' => 'Board Room', 'url' => ['/site/hall']],
-          ],
-        ],
-        ['label' => 'Offers', 'url' => ['/offers/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-    ];
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    ?> 
-</header>
-<div id="containerp" style="height:480px; /*position: absolute;*/margin: -117px 0 20px;" class="<?= $this->params['model'] ?>"></div>
-<div class="container">
-    <?= $content ?>
-</div>   
-    
-    <?= $this->render('partial/footer.php') ?>
+<?= $this->render('partial/navbar.php') ?>
+
+<div id="containerp" class="<?= $this->params['model'] ?>"></div>
+
+<?= $content ?>
+
+
+<?= $this->render('partial/footer.php') ?>
 
 <?php $this->endBody() ?>
 </body>

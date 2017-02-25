@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Rooms */
 
-$this->title = 'Wellness & Spa';
-$this->params['breadcrumbs'][] = ['label' => 'Wellness & Spa', 'url' => ['/site/spa']];
+$this->title = 'Fitness';
+$this->params['breadcrumbs'][] = ['label' => 'Fitness', 'url' => ['/site/gym']];
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['model'] = 'restaurant';
 $model = \common\models\Rooms::findOne(1);

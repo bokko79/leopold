@@ -4,13 +4,10 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use frontend\assets\AppAsset;
-use common\components\languageSwitcher;
+use frontend\assets\CoverAsset;
 
-AppAsset::register($this);
+CoverAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -20,23 +17,17 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+English" rel="stylesheet">
     <script src="https://use.fontawesome.com/f6ceb1ff95.js"></script>
     <?php $this->head() ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
 
-
 <?= $this->render('partial/navbar-normal.php') ?>
 
-<div class="container">
-    <?= Breadcrumbs::widget([
-        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-    ]) ?>       
-    <?= $content ?>
-</div>
-
+<?= $content ?>
 
 <?= $this->render('partial/footer.php') ?>
 

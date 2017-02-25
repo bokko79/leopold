@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 /**
  * Main frontend application asset bundle.
  */
-class AppAsset extends AssetBundle
+class CoverAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
@@ -15,17 +15,12 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/style_1.css',
         'css/animate.css',
-        'css/datepicker.css',
-        //'css/default.css',
         'css/isotope.css',
         'css/jquery-ui.css',
         'css/jquery.fancybox.css',
-        'css/optionswitch.css',
         'css/select_option1.css',
-        'css/settings.css',
     ];
     public $js = [
-        'js/bootstrap-datepicker.js',
         'js/custom.js',
         'js/isotope-triger.js',
         'js/isotope.min.js',

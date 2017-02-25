@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\Html;
 use yii\imagine\Image;
 
 /**
@@ -59,14 +60,16 @@ class Rooms extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'floor' => 'Floor',
-            'hotel_dept' => 'Hotel Dept',
-            'number' => 'Number',
-            'type' => 'Type',
-            'area' => 'Area',
-            'price' => 'Price',
-            'is_available' => 'Is Available',
+            'name' => \Yii::t('app', 'Name'),
+            'floor' => \Yii::t('app', 'Floor'),
+            'hotel_dept' => \Yii::t('app', 'Hotel Dept'),
+            'number' => \Yii::t('app', 'Number'),
+            'type' => \Yii::t('app', 'Type'),
+            'area' => \Yii::t('app', 'Area'),
+            'fullArea' => \Yii::t('app', 'Area'),
+            'fullPrice' => \Yii::t('app', 'Price'),
+            'price' => \Yii::t('app', 'Average price'),
+            'is_available' => \Yii::t('app', 'Is Available'),
             'file_id' => 'File ID',
             'available_from' => 'Available From',
             'update_time' => 'Update Time',
@@ -78,15 +81,15 @@ class Rooms extends \yii\db\ActiveRecord
         if ($this->validate()) {
            
             $fileName = $this->id . '_' . time();
-            $this->files->saveAs('images/room/' . $fileName . '1.' . $this->files->extension);         
+            $this->files->saveAs(\Yii::getAlias('@frontend/images/room/' . $fileName . '1.' . $this->files->extension));         
             
             $image = new \common\models\Files();
             $image->name = $fileName . '.' . $this->files->extension;
             $image->type = 'image';
             $image->time = time();
             
-            $thumb = 'images/room/'.$fileName.'1.'.$this->files->extension;                          
-            Image::thumbnail($thumb, 800, 640)->save(\Yii::getAlias('images/room/'.$fileName.'.'.$this->files->extension), ['quality' => 80]); 
+            $thumb = \Yii::getAlias('@frontend/images/room/' . $fileName . '1.' . $this->files->extension);
+            Image::thumbnail($thumb, 800, 640)->save(\Yii::getAlias('@frontend/images/room/'.$fileName.'.'.$this->files->extension), ['quality' => 80]); 
             
             $image->save();
 
@@ -98,7 +101,7 @@ class Rooms extends \yii\db\ActiveRecord
                 $roomFile->save();
             }
 
-            unlink(\Yii::getAlias($thumb));
+            unlink($thumb);
             
             return true;
         } else {
@@ -182,5 +185,21 @@ class Rooms extends \yii\db\ActiveRecord
             return $this->getTranslation()->text;
         }       
         return $this->name;   
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFullPrice()
+    {               
+        return '€'.$this->price;   
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFullArea()
+    {               
+        return $this->area.' m<sup>2</sup>';   
     }
 }

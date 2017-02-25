@@ -4,12 +4,9 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use frontend\assets\AppAsset;
 
-$asset = AppAsset::register($this);
-$baseUrl = $asset->baseUrl;
+AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -19,7 +16,7 @@ $baseUrl = $asset->baseUrl;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <script src="https://use.fontawesome.com/f6ceb1ff95.js"></script>
     <?php $this->head() ?>
 </head>
