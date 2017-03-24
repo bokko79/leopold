@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Rooms */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Offers', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app', 'Offers'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $this->params['model'] = $model->id;
 ?>

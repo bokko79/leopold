@@ -6,22 +6,22 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Rooms */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Rooms', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = $model->tName;
+/*$this->params['breadcrumbs'][] = ['label' => 'Rooms', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;*/
 $this->params['model'] = $model->id;
 ?>
 <div class="container">
     <div class="maintitlesphere fadeInUp animated">
             <h1 style="color:white;"><?= Html::encode($this->title) ?></h1>
 
-            <h3 style="color:#daa520;"><?= \Yii::t('app', 'from') . ' €' .$model->price ?></h3>
+            <?php /* ?><h3 style="color:#daa520;"><?= \Yii::t('app', 'from') . ' €' .$model->price ?></h3> <?php */ ?>
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
-            <?= Html::a('Book now', ['index'], ['class'=>'btn btn-primary']) ?>
+            <?php // Html::a(\Yii::t('app', 'Book now'), ['index'], ['class'=>'btn btn-primary']) ?>
 
     </div>
 
@@ -69,25 +69,21 @@ $this->params['model'] = $model->id;
                     $image->save(\Yii::getAlias('images/home/slider-04.jpg'));*/ ?>
         </div>
         <div class="col-sm-6">
-            <?= DetailView::widget([
-            'model' => $model,
-            'attributes' => [
-                
-                'name',
-                'hotel_dept',
-                'fullArea',
-                'fullPrice',
-                
-                //'description',
-            ],
-        ]) ?>
-            <h4><?= \Yii::t('app', 'Description') ?></h4>
-            <p><?= $model->description ?><?= $model->fullArea ?></p>
+            <h4><?= $model->tName ?></h4>
+            <ul>
+                <li><?= $model->hotel_dept ?></li>
+                <li><?= $model->fullArea ?></li>
+                <li><?= $model->fullPrice ?></li>
+            </ul>
+            
+
+            <h4 style="margin-top: 30px;"><?= \Yii::t('app', 'Description') ?></h4>
+            <p><?= $model->description ?> <?= $model->fullArea ?></p>
         </div>
     </div>
 </div> 
 
-<div class="maincont" style="background: #e1eff1; padding: 20px 0; border-top: 1px solid #aaa;">
+<div class="maincont" style="background: #e1eff1; padding: 30px 0; border-top: 1px solid #aaa; margin-top: 30px;">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -105,18 +101,39 @@ $this->params['model'] = $model->id;
         </div>
     </div>
 </div>
+<?php if($reviews = $model->roomReviews): ?>
 <div class="maincont" style="background: #e1eff1; padding: 20px 0;">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                
+                <hr>
             <h4><?= \Yii::t('app', 'Reviews') ?></h4>
-                
+                       <?php  foreach($reviews as $review){ ?>
+                            
+                            <table class="bordered" style="border-top:1px solid #ccc;">
+                                <tr>
+                                    <td class="hint" style="color: gray;">
+                                        <small><?= Yii::$app->formatter->asDate($review->time, 'php:n. mm Y.') ?></small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <?= $review->review_text ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="hint">
+                                        <b><small><?= $review->guest_name ?>, <?= $review->guest_country ?></small></b>
+                                    </td>
+                                </tr>
+                            </table>
+
+                       <?php } ?>
             </div>
         </div>
     </div>
 </div>
         
-    
+<?php endif; ?>
 
 

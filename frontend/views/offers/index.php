@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel common\models\OffersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Offers';
+$this->title = \Yii::t('app', 'Offers');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="offers-index">

@@ -15,9 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container inverted">
         <div class="row">
             <div class="col-xs-12">
-                <?= Html::img('@web/images/home/grb.png', ['style'=>'width:13%; opacity:1; -webkit-filter: invert(100%) drop-shadow(2px 2px 1px #111); filter: invert(100%) drop-shadow(4px 4px 4px #000);']) ?>
+                <?= Html::img('@web/images/home/grb.png', ['style'=>'width:13%; opacity:1; -webkit-filter: invert(10%) drop-shadow(2px 2px 1px #111); filter: invert(10%) drop-shadow(4px 4px 4px #000);']) ?>
                 <h1 class=""><?= Html::encode($this->title) ?></h1>
-                <p class="crimson">Spread throughout the building that composes the Hotel Leopold I at the top of the 17th century magnificent Petrovaradin Fortress, each of our 32 guestrooms and suites welcomes guests to sumptuous, elegant surroundings that reflect the rich cultural heritage of Novi Sad. </p>
+                <p class="crimson"><?= \Yii::t('app', 'Spread throughout the building that composes the Hotel Leopold I at the top of the 17th century magnificent Petrovaradin Fortress, each of our 32 guestrooms and suites welcomes guests to sumptuous, elegant surroundings that reflect the rich cultural heritage of Novi Sad.') ?></p>
             </div>
         </div>
     </div>

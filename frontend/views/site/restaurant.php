@@ -6,10 +6,10 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Rooms */
 
-$this->title = 'Leopold Restaurant';
-$this->params['breadcrumbs'][] = ['label' => 'Restaurant', 'url' => ['/site/restaurant']];
+$this->title = 'Leopold '. \Yii::t('app', 'Restaurant');
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app', 'Restaurant'), 'url' => ['/site/restaurant']];
 $this->params['breadcrumbs'][] = $this->title;
-$this->params['model'] = 'restaurant';
+$this->params['model'] = 'feature-restaurant';
 $model = \common\models\Rooms::findOne(1);
 ?>
 
@@ -50,20 +50,22 @@ $model = \common\models\Rooms::findOne(1);
                         ],
                     ]
                 ); ?>
-                <?php foreach ($model->roomFiles as $media): ?>
-                    <?= Html::img('@web/images/room/'.$media->file->name) ?>
-                <?php endforeach; ?>
+                <?php /* foreach ($model->roomFiles as $media): ?>
+                    
+                <?php endforeach; */ ?>
+                <?= Html::img('@web/images/features/DSC_4007m.jpg') ?>
+                <?= Html::img('@web/images/features/DSC_4010m.jpg') ?>
                 <?php $fotorama->end(); ?>
         </div>
         <div class="col-sm-6">
         	<h4><?= \Yii::t('app', 'Description') ?></h4>
-		        <p>You can enjoy delicious meals from our specially created menu. International cuisine with a touch of local flair will make your lunch or dinner unforgettable in the marvelous restaurant of Hotel Leopold I.</p>
+		        <p><?= \Yii::t('app', 'You can enjoy delicious meals from our specially created menu. International cuisine with a touch of local flair will make your lunch or dinner unforgettable in the marvelous restaurant of Hotel Leopold I.') ?></p>
 
-				<p>Specialy created fasting menu with winter tastes will wake up your appetite and make you ask for more. <?= Html::a('Download file', ['/site/download', 'path'=>'/images/room/room1.jpg']) ?></p>
+				<p><?= \Yii::t('app', 'Specialy created fasting menu with winter tastes will wake up your appetite and make you ask for more.') ?></p>
 
-		<p>In the close proximity of the hotel 3 restaurants (a Serbian National Restaurant, an Italian Restaurant/Pizzeria and a Fish Restaurant) have a the total capacity of 700 seats.</p>
+        		<p><?= \Yii::t('app', 'In the close proximity of the hotel 3 restaurants (a Serbian National Restaurant, an Italian Restaurant/Pizzeria and a Fish Restaurant) have a the total capacity of 700 seats.') ?></p>
 
-		<p>The restaurants are located on the plateau of the fortress, next to the famous clock and provide a unique view of the Danube river and the city of Novi Sad.</p>
+        		<p><?= \Yii::t('app', 'The restaurants are located on the plateau of the fortress, next to the famous clock and provide a unique view of the Danube river and the city of Novi Sad.') ?></p>
         </div>
     </div>
 </div> 

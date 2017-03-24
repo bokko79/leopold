@@ -36,7 +36,7 @@ $marker = new Marker([
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
+        <?= \Yii::t('app', 'If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.') ?>        
     </p>
 
     <div class="row">        
@@ -52,7 +52,7 @@ $marker = new Marker([
                 <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                    <?= Html::submitButton(\Yii::t('app', 'Submit'), ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>

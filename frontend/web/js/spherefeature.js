@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var feature = $(containerfeature).attr('class');
 	var spherefeature = PhotoSphereViewer({
 		container: document.getElementById('containerfeature'),
-		panorama:'/images/spheres/feature-'+feature+'.jpg',
+		panorama:'/images/spheres/'+feature+'.jpg',
 		autoload: false,
 		navbar: [],
 	});

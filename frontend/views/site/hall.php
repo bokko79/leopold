@@ -6,10 +6,10 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Rooms */
 
-$this->title = 'Board Room';
-$this->params['breadcrumbs'][] = ['label' => 'Board Room', 'url' => ['/site/hall']];
+$this->title = \Yii::t('app', 'Congress Hall');
+$this->params['breadcrumbs'][] = ['label' => \Yii::t('app', 'Congress Hall'), 'url' => ['/site/hall']];
 $this->params['breadcrumbs'][] = $this->title;
-$this->params['model'] = 'restaurant';
+$this->params['model'] = 'feature-congress';
 $model = \common\models\Rooms::findOne(1);
 ?>
 
@@ -50,20 +50,23 @@ $model = \common\models\Rooms::findOne(1);
                         ],
                     ]
                 ); ?>
-                <?php foreach ($model->roomFiles as $media): ?>
-                    <?= Html::img('@web/images/room/'.$media->file->name) ?>
-                <?php endforeach; ?>
+                <?php /* foreach ($model->roomFiles as $media): ?>
+                    
+                <?php endforeach; */ ?>
+                <?= Html::img('@web/images/features/DSC_4107m.jpg') ?>
+                <?= Html::img('@web/images/features/DSC_4111m.jpg') ?>
+                <?= Html::img('@web/images/features/DSC_4113m.jpg') ?>
+                <?= Html::img('@web/images/features/DSC_4145m.jpg') ?>
+                <?= Html::img('@web/images/features/DSC_4500m.jpg') ?>
                 <?php $fotorama->end(); ?>
         </div>
         <div class="col-sm-6">
         	<h4><?= \Yii::t('app', 'Description') ?></h4>
-		        <p>You can enjoy delicious meals from our specially created menu. International cuisine with a touch of local flair will make your lunch or dinner unforgettable in the marvelous restaurant of Hotel Leopold I.</p>
+		        <p><?= \Yii::t('app', 'Style. Glamour. Sophistication. Whether it\'s an exclusive product launch, an elegant gala dinner, a private meeting of the board, a corporate incentive, a quick working lunch or a personal occasion to celebrate, your special event at Hotel Leopold I will be an experience to remember.') ?></p>
 
-				<p>Specialy created fasting menu with winter tastes will wake up your appetite and make you ask for more. </p>
+                <p><?= \Yii::t('app', 'From the Baroque-inspired Congress Hall to the warm intimacy of the Board Room, Hotel Leopold I proposes a range of elegantly appointed meeting and reception venues for up to 60 participants, each supported by contemporary technological equipment and personalised banqueting services. An expert team of meeting co-ordinators is ready to assist you with all your professional needs and to ensure the success of your events.') ?></p>
 
-        		<p>In the close proximity of the hotel 3 restaurants (a Serbian National Restaurant, an Italian Restaurant/Pizzeria and a Fish Restaurant) have a the total capacity of 700 seats.</p>
-
-        		<p>The restaurants are located on the plateau of the fortress, next to the famous clock and provide a unique view of the Danube river and the city of Novi Sad.</p>
+                <p><?= \Yii::t('app', 'Board Room with the capacity of 16 seats is equipped with a round table, television, DVD player and other necessary technical equipment.') ?></p>
         </div>
     </div>
 </div> 

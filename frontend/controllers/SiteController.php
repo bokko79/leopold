@@ -55,6 +55,15 @@ class SiteController extends Controller
     {
         $this->layout = '/landing';
 
+        if ($post = Yii::$app->request->post('newsletter')) {
+            
+            $news = new \common\models\Customers();
+            $news->email = $post;
+            $news->save();
+
+            return $this->refresh();
+        }
+
         return $this->render('index');
     }
 
